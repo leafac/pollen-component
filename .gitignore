@@ -1,0 +1,11 @@
+/documentation/*.html
+/documentation/*.css
+/documentation/*.js
+/documentation/*.aux
+/documentation/*.log
+/compiled-documentation/
+/examples/**/pollen-cache
+/examples/**/*.html
+/examples/**/*.atom
+/examples/**/*.css
+/examples/**/*.js

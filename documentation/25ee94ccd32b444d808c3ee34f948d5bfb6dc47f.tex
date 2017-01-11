@@ -1,0 +1,26 @@
+\documentclass[tikz]{standalone}
+\usepackage{fontspec}
+\setmainfont{Fira Sans Light}
+\usetikzlibrary{fit, matrix, shapes.geometric, positioning}
+\begin{document}
+\begin{tikzpicture}
+[grouper/.style = {thick, ellipse, inner sep = -1mm}] 
+ \definecolor{traditional}{HTML}{0077AA} 
+ \definecolor{component}{HTML}{228B22} 
+ 
+ \matrix [matrix of nodes, column 1/.style = {anchor = base east}] (matrix) { 
+         & Link      & List      & $\cdots$ \\ 
+    HTML & $\bullet$ & $\bullet$ & $\cdots$ \\ 
+    CSS  & $\bullet$ & $\bullet$ & $\cdots$ \\ 
+    JS   & $\bullet$ & $\bullet$ & $\cdots$ \\ 
+ }; 
+ \foreach \y in {2, 3, 4} { 
+    \node [grouper, draw = traditional, fit = (matrix-\y-2) (matrix-\y-3) (matrix-\y-4)] {}; 
+ } 
+ \foreach \x in {2, 3} { 
+    \node [grouper, draw = component, fit = (matrix-2-\x) (matrix-3-\x) (matrix-4-\x)] {}; 
+ } 
+ \node [traditional, anchor = west, xshift = 1mm] at (matrix-3-4 -| matrix.east) {Traditional}; 
+ \node [component, anchor = north west, shift = {(-3mm, -1mm)}] at (matrix-4-2.south) {Component};
+\end{tikzpicture}
+\end{document}
