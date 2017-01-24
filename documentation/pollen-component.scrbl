@@ -117,7 +117,7 @@ Components do not replace the traditional architecture. For example, the cascadi
 
 While tools like React and Polymer target application development, we believe that document-preparation systems can benefit from components as well. Thus, we present @emph{Pollen Component}: an extension to Pollen that allows for component-based development.
 
-@margin-note{Unleash the full power of Pollen Component by defining CSS with @hyperlink["https://docs.racket-lang.org/css-expr"]{css-expr} and JavaScript with @hyperlink["https://github.com/soegaard/urlang"]{Urlang}.}
+@margin-note{Unleash the full power of Pollen Component by defining CSS with @hyperlink["https://docs.racket-lang.org/css-expr"]{CSS-expressions} and JavaScript with @hyperlink["https://github.com/soegaard/urlang"]{Urlang}.}
 
 The example above becomes the following with Pollen Component:
 
@@ -185,7 +185,7 @@ $ raco pkg install pollen-component
           [#:dynamic dynamic ...] [#:static static ...])
          #:contracts ([dynamic identifier?]
                       [static identifier?])]{
- @margin-note{See Pollen Component in action on my @hyperlink["https://www.leafac.com"]{personal website} (@hyperlink["https://git.leafac.com/www.leafac.com/"]{source}). It uses @hyperlink["https://docs.racket-lang.org/css-expr"]{css-expr} to define CSS.}
+ @margin-note{See Pollen Component in action on my @hyperlink["https://www.leafac.com"]{personal website} (@hyperlink["https://git.leafac.com/www.leafac.com/"]{source}). It uses @hyperlink["https://docs.racket-lang.org/css-expr"]{CSS-expressions} to define CSS.}
 
  Use @racket[components-output-types] in @filepath{pollen.rkt} to specify the output types supported by components. The @racket[dynamic] output types are those for which one would create tag functions, for example, HTML, Atom and LaTeX. The @racket[static] output types are the styles and behavior that support the document, for example, CSS, JavaScript and LaTeX styles.
 
