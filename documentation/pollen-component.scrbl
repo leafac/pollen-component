@@ -206,19 +206,21 @@ Thank you @hyperlink["http://typographyforlawyers.com/about.html"]{Matthew But­
 
 This section documents all notable changes to pollen-component. It follows recommendations from @hyperlink["http://keepachangelog.com/"]{Keep a CHANGELOG} and uses @hyperlink["http://semver.org/"]{Semantic Versioning}. Each released version is a Git tag.
 
-@subsection[#:tag "changelog/unreleased"]{Unreleased} @; 0.0.1 · 2016-02-23
+@;{
+ @subsection[#:tag "changelog/unreleased"]{Unreleased} @; 0.0.1 · 2016-02-23
 
-@subsubsection[#:tag "changelog/unreleased/added"]{Added}
+ @subsubsection[#:tag "changelog/unreleased/added"]{Added}
 
-@subsubsection[#:tag "changelog/unreleased/changed"]{Changed}
+ @subsubsection[#:tag "changelog/unreleased/changed"]{Changed}
 
-@subsubsection[#:tag "changelog/unreleased/deprecated"]{Deprecated}
+ @subsubsection[#:tag "changelog/unreleased/deprecated"]{Deprecated}
 
-@subsubsection[#:tag "changelog/unreleased/removed"]{Removed}
+ @subsubsection[#:tag "changelog/unreleased/removed"]{Removed}
 
-@subsubsection[#:tag "changelog/unreleased/fixed"]{Fixed}
+ @subsubsection[#:tag "changelog/unreleased/fixed"]{Fixed}
 
-@subsubsection[#:tag "changelog/unreleased/security"]{Security}
+ @subsubsection[#:tag "changelog/unreleased/security"]{Security}
+}
 
 @subsection[#:tag "changelog/0.0.1"]{0.0.1 · 2017-01-21}
 
