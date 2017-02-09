@@ -4,6 +4,7 @@
           racket/string file/sha1 racket/format racket/file racket/system)
 
 @(define (tikz . sources)
+   (define path/images (findf directory-exists? '("documentation/images" "images")))
    (define source
      @~a{
  \documentclass[tikz]{standalone}
@@ -17,9 +18,9 @@
  \end{document}
  })
    (define name (sha1 (open-input-string source)))
-   (define path/latex (~a name ".tex"))
-   (define path/pdf (~a name ".pdf"))
-   (define path/image (~a name ".png"))
+   (define path/latex (~a path/images "/" name ".tex"))
+   (define path/pdf (~a path/images "/" name ".pdf"))
+   (define path/image (~a path/images "/" name ".png"))
    (unless (file-exists? path/latex) (display-to-file source path/latex))
    (unless (file-exists? path/pdf) (system (~a "xelatex '" path/latex "'")))
    (unless (file-exists? path/image)
