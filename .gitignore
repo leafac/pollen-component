@@ -1,9 +1,14 @@
+*~
+\#*
+.\#*
+.DS_Store
+compiled/
+/doc/
 /documentation/*.html
 /documentation/*.css
 /documentation/*.js
 /documentation/*.aux
 /documentation/*.log
-/compiled-documentation/
 /examples/**/pollen-cache
 /examples/**/*.html
 /examples/**/*.atom

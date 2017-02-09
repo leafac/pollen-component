@@ -1,15 +1,11 @@
-.PHONY: documentation documentation/deploy documentation/clean clean
+.PHONY: deploy
 
-documentation: compiled-documentation/index.html
+project = pollen-component
 
-compiled-documentation/index.html: documentation/pollen-component.scrbl
-	cd documentation && raco scribble --dest ../compiled-documentation/ --dest-name index -- pollen-component.scrbl
-
-documentation/deploy: documentation
-	rsync -av --delete compiled-documentation/ leafac.com:leafac.com/websites/software/pollen-component/
-
-documentation/clean:
-	rm -rf compiled-documentation
-	rm -f documentation/*.{tex,pdf,png,aux,log}
-
-clean: documentation/clean
+deploy:
+	cd $$(mktemp -d) && \
+	git clone $(CURDIR) && \
+	raco pkg create $(project) && \
+	mv $(project).zip $(project)$(version).zip && \
+	mv $(project).zip.CHECKSUM $(project)$(version).zip.CHECKSUM && \
+	rsync -av $(project)$(version).zip{,.CHECKSUM} leafac.com:leafac.com/websites/software/$(project)/
