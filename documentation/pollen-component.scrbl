@@ -201,7 +201,7 @@ $ raco pkg install pollen-component
 
 @section[#:tag "acknowledgments"]{Acknowledgments}
 
-Thank you @hyperlink["http://typographyforlawyers.com/about.html"]{Matthew But­t­er­ick} for Pollen and for the feedback given in private email conversations. Thank you all Racket developers. Thank you all users of this library.
+Thank you @hyperlink["http://typographyforlawyers.com/about.html"]{Matthew Butterick} for Pollen and for the feedback given in private email conversations. Thank you Greg Trzeciak for the feedback given in private conversations. Thank you all Racket developers. Thank you all users of this library.
 
 @section[#:tag "changelog"]{Changelog}
 
