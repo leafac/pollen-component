@@ -262,7 +262,6 @@ This section documents all notable changes to pollen-component. It follows recom
 
 @itemlist[
  @item{Example in documentation of how to use Pollen Component with CSS-expressions and Urlang.}
- @item{Automated tests.}
  @item{Acknowledgment to Greg Trzeciak.}]
 
 @subsection[#:tag "changelog/0.0.1"]{0.0.1 · 2017-01-21}
