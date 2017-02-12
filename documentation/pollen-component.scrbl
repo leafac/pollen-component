@@ -118,7 +118,7 @@ Components do not replace the traditional architecture. For example, the cascadi
 
 While tools like React and Polymer target application development, we believe that document-preparation systems can benefit from components as well. Thus, we present @emph{Pollen Component}: an extension to Pollen that allows for component-based development.
 
-@margin-note{Unleash the full power of Pollen Component by defining CSS with @hyperlink["https://docs.racket-lang.org/css-expr"]{CSS-expressions} and JavaScript with @hyperlink["https://github.com/soegaard/urlang"]{Urlang}.}
+@margin-note{Unleash the full power of Pollen Component by defining CSS with @hyperlink["https://docs.racket-lang.org/css-expr"]{CSS-expressions} and JavaScript with @hyperlink["https://github.com/soegaard/urlang"]{Urlang}. @seclink["full-example"]{See an example below}.}
 
 The example above becomes the following with Pollen Component:
 
@@ -199,6 +199,39 @@ $ raco pkg install pollen-component
  The available @racket[#:output-type]s are those declared in @racket[components-output-types]. The @racket[body] corresponding to @racket[dynamic] output types turn into a function tag that detects the output type of the current document and executes the appropriate code. The @racket[body] corresponding to @racket[static] output types are accumulated in parameters of association lists named @racket[components/<static>]. There is one @racket[components/<static>] parameter for each static output type. The keys are the components’ names (as symbols) and the values are the components’ contents for that output type as defined by @racket[body].
 }
 
+@section[#:tag "full-example"]{Full Example}
+
+The following in an example of Pollen Component including CSS defined with @hyperlink["https://docs.racket-lang.org/css-expr"]{CSS-expressions} and JavaScript defined with @hyperlink["https://github.com/soegaard/urlang"]{Urlang}.
+
+@racketmod[
+ #:file "pollen.rkt"
+ racket
+ (require pollen-component css-expr urlang)
+
+ (provide (all-defined-out))
+
+ (current-urlang-echo? #t)
+
+ (components-output-types #:dynamic html
+                          #:static css javascript)
+
+ (define-syntax-rule (javascript expressions ...)
+   (with-output-to-string
+       (λ ()
+         (urlang
+          (urmodule
+           javascript-module expressions ...)))))
+
+ (define-component (link href . elements)
+   #:html
+   `(a ((href ,href)) ,@elements)
+   #:css
+   (css-expr [a #:color red])
+   #:javascript
+   (javascript
+    (import document)
+    (define links (document.getElementsByTagName "a"))))]
+
 @section[#:tag "acknowledgments"]{Acknowledgments}
 
 Thank you @hyperlink["http://typographyforlawyers.com/about.html"]{Matthew Butterick} for Pollen and for the feedback given in private email conversations. Thank you Greg Trzeciak for the feedback given in private conversations. Thank you all Racket developers. Thank you all users of this library.
@@ -222,6 +255,15 @@ This section documents all notable changes to pollen-component. It follows recom
 
  @subsubsection[#:tag "changelog/unreleased/security"]{Security}
 }
+
+@subsection[#:tag "changelog/0.0.2"]{0.0.2}
+
+@subsubsection[#:tag "changelog/0.0.2/added"]{Added}
+
+@itemlist[
+ @item{Example in documentation of how to use Pollen Component with CSS-expressions and Urlang.}
+ @item{Automated tests.}
+ @item{Acknowledgment to Greg Trzeciak.}]
 
 @subsection[#:tag "changelog/0.0.1"]{0.0.1 · 2017-01-21}
 
