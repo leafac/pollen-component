@@ -37,7 +37,7 @@
 @tabular[#:style 'boxed
          #:sep @hspace[1]
          #:row-properties '(bottom-border)
-         `((, @bold{Version} , @seclink["changelog/0.0.3"]{0.0.3})
+         `((, @bold{Version} , @seclink["changelog/0.0.4"]{0.0.4})
            (, @bold{Documentation} , @hyperlink["https://docs.racket-lang.org/pollen-component"]{https://docs.racket-lang.org/pollen-component})
            (, @bold{License} , @hyperlink["https://gnu.org/licenses/gpl-3.0.txt"]{GNU General Public License Version 3})
            (, @bold{Code of Conduct} , @hyperlink["http://contributor-covenant.org/version/1/4/"]{Contributor Covenant v1.4.0})
@@ -255,6 +255,13 @@ This section documents all notable changes to pollen-component. It follows recom
 
  @subsubsection[#:tag "changelog/unreleased/security"]{Security}
 }
+
+@subsection[#:tag "changelog/0.0.4"]{0.0.4 · 2017-03-08}
+
+@subsubsection[#:tag "changelog/0.0.4/fixed"]{Fixed}
+
+@itemlist[
+ @item{Fix automated tests by ommitting examples directory.}]
 
 @subsection[#:tag "changelog/0.0.3"]{0.0.3 · 2017-02-13}
 
