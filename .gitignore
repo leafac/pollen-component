@@ -7,9 +7,6 @@ compiled/
 /documentation/*.html
 /documentation/*.css
 /documentation/*.js
-/documentation/*.png
-/documentation/images/*.aux
-/documentation/images/*.log
 /examples/**/pollen-cache
 /examples/**/*.html
 /examples/**/*.atom

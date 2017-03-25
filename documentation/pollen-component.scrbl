@@ -3,29 +3,7 @@
 @(require (for-label racket pollen-component pollen/tag)
           racket/string file/sha1 racket/format racket/file racket/system)
 
-@(define (tikz . sources)
-   (define path/images (findf directory-exists? '("documentation/images" "images")))
-   (define source
-     @~a{
- \documentclass[tikz]{standalone}
- \usepackage{fontspec}
- \setmainfont{Fira Sans Light}
- \usetikzlibrary{fit, matrix, shapes.geometric, positioning}
- \begin{document}
- \begin{tikzpicture}
- @(string-join sources)
- \end{tikzpicture}
- \end{document}
- })
-   (define name (sha1 (open-input-string source)))
-   (define path/latex (~a path/images "/" name ".tex"))
-   (define path/pdf (~a path/images "/" name ".pdf"))
-   (define path/image (~a path/images "/" name ".png"))
-   (unless (file-exists? path/latex) (display-to-file source path/latex))
-   (unless (file-exists? path/pdf) (system (~a "xelatex '" path/latex "'")))
-   (unless (file-exists? path/image)
-     (system (~a "convert -density 2000 -resize 5.5% '" path/pdf "' '" path/image "'")))
-   (image path/image))
+@(define path/images (if (directory-exists? "documentation/") "documentation/" ""))
 
 @title{Pollen Component}
 @author{@author+email["Leandro Facchinetti" "me@leafac.com"]}
@@ -89,28 +67,7 @@ The separation of structure (@filepath{pollen.rkt}), appearance (@filepath{style
 
 The problems with this model begin when changing from questions like “what are all the styles in effect on this document?” to questions like “what constitutes a link on this document?” To answer this, it is necessary to open at least three files—@filepath{pollen.rkt}, @filepath{styles.css.pp} and @filepath{scripts.js.pp}—and search for the snippets relevant to links. One sees only the pieces and has to @emph{imagine} the full picture. Also, as the project grows, it becomes harder to understand the far-reached effects the parts have on one another.
 
-@margin-note{
- @tikz|{
-  [grouper/.style = {thick, ellipse, inner sep = -1mm}]
-  \definecolor{traditional}{HTML}{0077AA}
-  \definecolor{component}{HTML}{228B22}
-
-  \matrix [matrix of nodes, column 1/.style = {anchor = base east}] (matrix) {
-         & Link      & List      & $\cdots$ \\
-    HTML & $\bullet$ & $\bullet$ & $\cdots$ \\
-    CSS  & $\bullet$ & $\bullet$ & $\cdots$ \\
-    JS   & $\bullet$ & $\bullet$ & $\cdots$ \\
-  };
-  \foreach \y in {2, 3, 4} {
-    \node [grouper, draw = traditional, fit = (matrix-\y-2) (matrix-\y-3) (matrix-\y-4)] {};
-  }
-  \foreach \x in {2, 3} {
-    \node [grouper, draw = component, fit = (matrix-2-\x) (matrix-3-\x) (matrix-4-\x)] {};
-  }
-  \node [traditional, anchor = west, xshift = 1mm] at (matrix-3-4 -| matrix.east) {Traditional};
-  \node [component, anchor = north west, shift = {(-3mm, -1mm)}] at (matrix-4-2.south) {Component};
-  }|
-}
+@margin-note{@image[@~a{@|path/images|traditional-vs-component-based.png}]}
 
 Recently, modern web development tools including @hyperlink["https://facebook.github.io/react/"]{React} and @hyperlink["https://www.polymer-project.org"]{Polymer} popularized one solution to these issues: @emph{components}. Components bring together the definitions of structure, appearance and behavior for distinguishable parts of the document.
 
