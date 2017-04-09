@@ -19,7 +19,7 @@
            (, @bold{Documentation} , @hyperlink["https://docs.racket-lang.org/pollen-component"]{https://docs.racket-lang.org/pollen-component})
            (, @bold{License} , @hyperlink["https://gnu.org/licenses/gpl-3.0.txt"]{GNU General Public License Version 3})
            (, @bold{Code of Conduct} , @hyperlink["http://contributor-covenant.org/version/1/4/"]{Contributor Covenant v1.4.0})
-           (, @bold{Distribution} , @hyperlink["https://pkgd.racket-lang.org/pkgn/package/pollen-component"]{Racket package})
+           (, @bold{Distribution} , @hyperlink["https://pkgs.racket-lang.org/package/pollen-component"]{Racket package})
            (, @bold{Source} , @hyperlink["https://git.leafac.com/pollen-component"]{https://git.leafac.com/pollen-component})
            (, @bold{Bug Reports} , @para{Write emails to @hyperlink["mailto:pollen-component@leafac.com"]|{pollen-component@leafac.com}|.})
            (, @bold{Contributions} , @para{Send @hyperlink["https://git-scm.com/docs/git-format-patch"]{patches} and @hyperlink["https://git-scm.com/docs/git-request-pull"]{pull requests} via email to @hyperlink["mailto:pollen-component@leafac.com"]|{pollen-component@leafac.com}|.}))]
@@ -159,7 +159,7 @@ Unleash the full power of Pollen Component by defining CSS with @hyperlink["http
 
 @section[#:tag "installation"]{Installation}
 
-Pollen Component is a @hyperlink["https://pkgd.racket-lang.org/pkgn/package/pollen-component"]{Racket package}. Install it in DrRacket or with the following command line:
+Pollen Component is a @hyperlink["https://pkgs.racket-lang.org/package/pollen-component"]{Racket package}. Install it in DrRacket or with the following command line:
 
 @nested[#:style 'code-inset
         @verbatim|{
