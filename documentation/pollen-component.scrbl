@@ -63,7 +63,7 @@ var links = document.getElementsByTagName('a'); // …
 Without ◊link["http://…"]{Pollen Component}.
                           }|]]
 
-The separation of structure (@filepath{pollen.rkt}), appearance (@filepath{styles.css.pp}), behavior (@filepath{scripts.js.pp}) and content (@filepath{index.html.pm}) is a good idea that stood the test of time. So much so, that it is not particular of Pollen projects, but the standard in document-preparation systems like the web and LaTeX. Its main advantage is consistency: generated documents use the same fonts, colors, sizes and so on throughout the pages because those are specified in a single place.
+The separation of structure (@filepath{pollen.rkt}), appearance (@filepath{styles.css.pp}), behavior (@filepath{scripts.js.pp}) and content (@filepath{index.html.pm}) is a good idea that stood the test of time. So much so, that it is not particular of Pollen projects, but the standard in document-preparation systems like the web and @hyperlink["https://www.latex-project.org/"]{LaTeX}. Its main advantage is consistency: generated documents use the same fonts, colors, sizes and so on throughout the pages because those are specified in a single place.
 
 The problems with this model begin when changing from questions like “what are all the styles in effect on this document?” to questions like “what constitutes a link on this document?” To answer this, it is necessary to open at least three files—@filepath{pollen.rkt}, @filepath{styles.css.pp} and @filepath{scripts.js.pp}—and search for the snippets relevant to links. One sees only the pieces and has to @emph{imagine} the full picture. Also, as the project grows, it becomes harder to understand the far-reached effects the parts have on one another.
 
@@ -176,6 +176,8 @@ $ raco pkg install pollen-component
 
  Use @racket[components-output-types] in @filepath{pollen.rkt} to specify the output types supported by components. The @racket[dynamic] output types are those for which one would create tag functions, for example, HTML, Atom and LaTeX. The @racket[static] output types are the styles and behavior that support the document, for example, CSS, JavaScript and LaTeX styles.
 
+ @margin-note{The @racket[static] output types are Racket parameters, which are run-time (dynamic) functions. They receive this name because, with respect to the component being defined, the contents of the @racket[static] output types are always the same. For example, there are many HTML links on a page, so component for links should have HTML as a @racket[dynamic] output type; but the styles associated with links are always the same, defined in a stylesheet, so CSS should be a @racket[static] output type.}
+
  Using @racket[components-output-types] introduces bindings for @racket[define-component] and @racket[components/<static>]s (one for each @racket[static] output type) in the current environment. Thus, @racket[components-output-types] @emph{must come first and appear only once}.
 }
 
@@ -186,7 +188,7 @@ $ raco pkg install pollen-component
 
  The @racket[body] corresponding to @racket[dynamic] output types turn into a function tag that detects the output type of the current document and executes the appropriate code. Undefined @racket[dynamic] output types fall back to @racket[default-tag-function].
 
- The @racket[body] corresponding to @racket[static] output types are accumulated in parameters of association lists named @racket[components/<static>]. There is one @racket[components/<static>] parameter for each static output type. The keys are the components’ names (as symbols) and the values are the components’ contents for that output type as defined by @racket[body].
+ The @racket[body] corresponding to @racket[static] output types are accumulated in @seclink["parameterize" #:doc '(lib "scribblings/guide/guide.scrbl")]{Racket parameters} of association lists named @racket[components/<static>]. There is one @racket[components/<static>] parameter for each static output type. The keys are the components names (as symbols) and the values are the components contents for that output type as defined by @racket[body].
 }
 
 @section[#:tag "acknowledgments"]{Acknowledgments}
