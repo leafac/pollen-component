@@ -172,7 +172,7 @@ $ raco pkg install pollen-component
           [#:dynamic dynamic ...] [#:static static ...])
          #:contracts ([dynamic identifier?]
                       [static identifier?])]{
- @margin-note{See Pollen Component in action on my @hyperlink["https://www.leafac.com"]{personal website} (@hyperlink["https://git.leafac.com/www.leafac.com/"]{source}). It also uses @hyperlink["https://docs.racket-lang.org/css-expr"]{CSS-expressions} to define CSS.}
+ @margin-note{See Pollen Component in action on my @hyperlink["https://www.leafac.com"]{personal website} (@hyperlink["https://git.leafac.com/www.leafac.com/tree/?id=f063597fefe0ad8d846b5d101749cb0627eec218"]{source}). It also uses @hyperlink["https://docs.racket-lang.org/css-expr"]{CSS-expressions} to define CSS.}
 
  Use @racket[components-output-types] in @filepath{pollen.rkt} to specify the output types supported by components. The @racket[dynamic] output types are those for which one would create tag functions, for example, HTML, Atom and LaTeX. The @racket[static] output types are the styles and behavior that support the document, for example, CSS, JavaScript and LaTeX styles.
 
