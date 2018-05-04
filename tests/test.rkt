@@ -19,3 +19,22 @@
    (pollen:components/css)
    '((body-text . "body {font-size: 18px;}") (link . "a {background-color: pink;}")))
   (reset-cache))
+
+(module+ test
+  (require (only-in pollen-component current-pollen-component-dynamic-type)
+           (prefix-in parameter: "parameter.rkt"))
+
+  ;; error if metas is undefined and current-pollen-component-dynamic-type is not set
+  (check-exn
+   exn:fail:user?
+   (lambda () (parameter:tag "hello who?")))
+
+  (check-equal?
+   (parameterize ([current-pollen-component-dynamic-type "html"])
+     (parameter:tag "hello html"))
+   '(div ((id "hello html"))))
+
+  (check-equal?
+   (parameterize ([current-pollen-component-dynamic-type "atom"])
+     (parameter:tag "hello atom"))
+   '(some-tag "@" "hello atom")))

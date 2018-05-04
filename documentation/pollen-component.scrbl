@@ -191,9 +191,35 @@ $ raco pkg install pollen-component
  The @racket[body] corresponding to @racket[static] output types are accumulated in @seclink["parameterize" #:doc '(lib "scribblings/guide/guide.scrbl")]{Racket parameters} of association lists named @racket[components/<static>]. There is one @racket[components/<static>] parameter for each static output type. The keys are the components names (as symbols) and the values are the components contents for that output type as defined by @racket[body].
 }
 
+@defparam[current-pollen-component-dynamic-type type string?]{
+A parameter that for using component outside a Pollen scope. Use this to set the dynamic output type in places where the Pollen @racket[metas] variable is undefined, for example, to define components in files other than @filepath{pollen.rkt}.
+}
+
+@racketmod[
+ #:file "component.rkt"
+ racket
+ (require pollen-component)
+ (provide (all-defined-out))
+
+ (components-output-types #:dynamic html txt #:static css javascript)
+
+ (define-component (test a)
+   #:html
+   `(p ,a)
+   #:txt
+   (format "Hey you wrote : ~a" a))
+
+ (code:comment "get the html version")
+ (parameterize ([current-pollen-component-dynamic-type "html"])
+   (test "hello"))
+
+ (code:comment "get the txt version")
+ (parameterize ([current-pollen-component-dynamic-type "txt"])
+   (test "hello"))]
+
 @section[#:tag "acknowledgments"]{Acknowledgments}
 
-Thank you @hyperlink["http://typographyforlawyers.com/about.html"]{Matthew Butterick} for Pollen and for the feedback given in private email conversations. Thank you Greg Trzeciak for the feedback given in private conversations. Thank you all Racket developers. Thank you all users of this library.
+Thank you @hyperlink["http://typographyforlawyers.com/about.html"]{Matthew Butterick} for Pollen and for the feedback given in private email conversations. Thank you Greg Trzeciak for the feedback given in private conversations. Thank you Luke Whittlesey for contributing @racket[current-pollen-component-dynamic-type]. Thank you all Racket developers. Thank you all users of this library.
 
 @section[#:tag "changelog"]{Changelog}
 
@@ -214,6 +240,13 @@ This section documents all notable changes to pollen-component. It follows recom
 
  @subsubsection[#:tag "changelog/unreleased/security"]{Security}
 }
+
+@subsection[#:tag "changelog/0.0.5"]{0.0.5 · 2018-05-03}
+
+@subsubsection[#:tag "changelog/0.0.5/added"]{Added}
+
+@itemlist[
+ @item{Added @racket[current-pollen-component-dynamic-type]. (Thanks Luke Whittlesey.)}]
 
 @subsection[#:tag "changelog/0.0.4"]{0.0.4 · 2017-03-08}
 

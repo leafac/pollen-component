@@ -2,7 +2,15 @@
 (require (for-syntax racket/base syntax/parse pollen/setup racket/dict racket/list racket/syntax)
          pollen/core pollen/setup pollen/file pollen/tag sugar/file syntax/parse/define racket/list)
 
-(provide components-output-types)
+(provide components-output-types current-pollen-component-dynamic-type)
+
+(define current-pollen-component-dynamic-type (make-parameter #f))
+
+(define-syntax (if-identifier-bound stx)
+  (syntax-case stx ()
+    [(_ id phase-level iftrue iffalse)
+     (let ([where (identifier-binding #'id (syntax->datum #'phase-level))])
+       (if where #'iftrue #'iffalse))]))
 
 (define-syntax-parser components-output-types
   [(components-output-types (~or (~optional (~seq #:dynamic dynamic:identifier ...))
@@ -49,7 +57,18 @@
                              argument (... (... ...)))]
                          [the-component
                           (with-syntax ([metas* (datum->syntax #'the-component 'metas)])
-                            #'(let* ([metas metas*]
+                            #'(let* ([metas
+                                      (if-identifier-bound
+                                       metas* 0
+                                       metas*
+                                       (begin
+                                         (when (equal? (current-pollen-component-dynamic-type) #f)
+                                           (raise-user-error (quote the-component)
+                                                             "~a :: ~a OR ~a"
+                                                             "failed because the dynamic type is not defined"
+                                                             "use this tag within a scope where Pollen’s ‘metas’ is defined"
+                                                             "use the ‘current-pollen-component-dynamic-type’ parameter"))
+                                         (hash 'here-path (format "dummy.~a.pm" (current-pollen-component-dynamic-type)))))]
                                      [here (select-from-metas 'here-path metas)]
                                      [here/output-path (->output-path here)]
                                      [here/extension (get-ext here/output-path)]
