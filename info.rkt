@@ -1,7 +1,7 @@
 #lang info
 
 (define collection "pollen-component")
-(define version "0.0.4")
+(define version "0.0.5")
 (define deps '("base" "pollen" "sugar"))
 (define build-deps '("scribble-lib" "racket-doc"))
 (define scribblings '(("documentation/pollen-component.scrbl" ())))
