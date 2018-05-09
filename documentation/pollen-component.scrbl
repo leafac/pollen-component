@@ -16,13 +16,13 @@
          #:sep @hspace[1]
          #:row-properties '(bottom-border)
          `((, @bold{Version} , @seclink["changelog/0.0.5"]{0.0.5})
-           (, @bold{Documentation} , @hyperlink["https://docs.racket-lang.org/pollen-component"]{https://docs.racket-lang.org/pollen-component})
+           (, @bold{Documentation} , @hyperlink["https://docs.racket-lang.org/pollen-component/"]{Racket Documentation})
            (, @bold{License} , @hyperlink["https://gnu.org/licenses/gpl-3.0.txt"]{GNU General Public License Version 3})
            (, @bold{Code of Conduct} , @hyperlink["http://contributor-covenant.org/version/1/4/"]{Contributor Covenant v1.4.0})
-           (, @bold{Distribution} , @hyperlink["https://pkgs.racket-lang.org/package/pollen-component"]{Racket package})
-           (, @bold{Source} , @hyperlink["https://git.leafac.com/pollen-component"]{https://git.leafac.com/pollen-component})
-           (, @bold{Bug Reports} , @para{Write emails to @hyperlink["mailto:pollen-component@leafac.com"]|{pollen-component@leafac.com}|.})
-           (, @bold{Contributions} , @para{Send @hyperlink["https://git-scm.com/docs/git-format-patch"]{patches} and @hyperlink["https://git-scm.com/docs/git-request-pull"]{pull requests} via email to @hyperlink["mailto:pollen-component@leafac.com"]|{pollen-component@leafac.com}|.}))]
+           (, @bold{Distribution} , @hyperlink["https://pkgs.racket-lang.org/package/pollen-component"]{Racket Package})
+           (, @bold{Source} , @hyperlink["https://github.com/leafac/pollen-component"]{GitHub})
+           (, @bold{Bug Reports} , @hyperlink["https://github.com/leafac/pollen-component/issues"]{GitHub Issues})
+           (, @bold{Contributions} , @hyperlink["https://github.com/leafac/pollen-component/pulls"]{GitHub Pull Requests}))]
 
 @section[#:tag "overview"]{Overview}
 
@@ -172,7 +172,7 @@ $ raco pkg install pollen-component
           [#:dynamic dynamic ...] [#:static static ...])
          #:contracts ([dynamic identifier?]
                       [static identifier?])]{
- @margin-note{See Pollen Component in action on my @hyperlink["https://www.leafac.com"]{personal website} (@hyperlink["https://git.leafac.com/www.leafac.com/tree/?id=f063597fefe0ad8d846b5d101749cb0627eec218"]{source}). It also uses @hyperlink["https://docs.racket-lang.org/css-expr"]{CSS-expressions} to define CSS.}
+ @margin-note{See Pollen Component in action on my @hyperlink["https://www.leafac.com"]{personal website} (@hyperlink["https://github.com/leafac/pollen-www.leafac.com/tree/f063597fefe0ad8d846b5d101749cb0627eec218"]{source}). It also uses @hyperlink["https://docs.racket-lang.org/css-expr"]{CSS-expressions} to define CSS.}
 
  Use @racket[components-output-types] in @filepath{pollen.rkt} to specify the output types supported by components. The @racket[dynamic] output types are those for which one would create tag functions, for example, HTML, Atom and LaTeX. The @racket[static] output types are the styles and behavior that support the document, for example, CSS, JavaScript and LaTeX styles.
 
