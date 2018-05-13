@@ -1,7 +1,7 @@
 Pollen Component
 ================
 
-Component-based development for Pollen.
+Component-based development for [Pollen](https://docs.racket-lang.org/pollen/).
 
 |||
 |-|-|
